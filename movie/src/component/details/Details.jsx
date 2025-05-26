@@ -1,7 +1,6 @@
 import { Button } from "@/components/ui/button";
-import { SeparatorHorizontal } from "lucide-react";
 
-export const Details = ({ movie }) => {
+export const Details = ({movie}) => {
   return (
     <div>
       <Button
@@ -34,20 +33,9 @@ export const Details = ({ movie }) => {
       >
         Romance
       </Button>
-      <div className=" flex justify center">
-        <p>{movie.overview}</p>
-        <div className="  flex justify center  gap-5 w-[1880px] h-[41px] --spacing(1) ">
-          <p>Director</p>
-          <p>Jon M. Chu</p>
-        </div>
-        <div className="  flex justify center  gap-5 w-[1880px] h-[41px] --spacing(1) ">
-          <p>Director</p>
-          <p>Jon M. Chu</p>
-        </div>
-        <div className="  flex justify center  gap-5 w-[1880px] h-[41px] --spacing(1) ">
-          <p>Director</p>
-          <p>Jon M. Chu</p>
-        </div>
+      <div>
+  <p>{movie.overview}</p>
+  
       </div>
     </div>
   );

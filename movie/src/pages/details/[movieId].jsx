@@ -4,10 +4,8 @@ import { Details } from "@/component/details/Details";
 import { getMovieById } from "@/getMovieById";
 import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
+import { MovieCarouselItem } from "@/component/details/DetailsHeader";
 import { Title } from "@/component/details/IdMovieTitle";
-import { MovieTrailer } from "@/component/movieTrailer";
-import { Frame } from "@/component/details/Frame";
-import { MoreMovie } from "@/component/details/MoreMovie";
 
 export default function Page() {
   const router = useRouter();
@@ -19,7 +17,7 @@ export default function Page() {
 
     const getMovie = async () => {
       const data = await getMovieById(movieId);
-      console.log("dataaa:", data);
+      console.log("dataaa:", data); 
       setMovie(data);
     };
 
@@ -33,10 +31,9 @@ export default function Page() {
   return (
     <div>
       <Header />
-      <Frame movie={movie} />
+      <MovieCarouselItem movie={movie} />
       <Title />
       <Details movie={movie} />
-      <MoreMovie />
       <Footer />
     </div>
   );
