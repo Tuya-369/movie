@@ -32,6 +32,7 @@ export default function Page() {
 
   return (
     <div>
+      <Footer />
       <Header />
       <Frame movie={movie} />
       <Title />
