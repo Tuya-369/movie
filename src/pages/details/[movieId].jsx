@@ -32,13 +32,13 @@ export default function Page() {
 
   return (
     <div>
-      <Footer />
       <Header />
       <Frame movie={movie} />
-      <Title />
       <Details movie={movie} />
       <MoreMovie />
-      <Footer />
+      <div className="mt-[70px]">
+        <Footer />
+      </div>
     </div>
   );
 }

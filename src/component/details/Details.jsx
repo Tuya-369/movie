@@ -1,52 +1,20 @@
-import { Button } from "@/components/ui/button";
-import { SeparatorHorizontal } from "lucide-react";
+import { Frame } from "lucide-react";
+import { DirectorName } from "./detailsName";
+import { DetailButton } from "./DetalsButton";
+import { Title } from "./IdMovieTitle";
 
 export const Details = ({ movie }) => {
   return (
-    <div>
-      <Button
-        className="w-[77px] h-[20px] text-text-foreground "
-        variant="outline"
-      >
-        Fairy Tale
-      </Button>
-      <Button
-        className="w-[77px] h-[20px] text-text-foreground "
-        variant="outline"
-      >
-        Pop Musical
-      </Button>
-      <Button
-        className="w-[77px] h-[20px] text-text-foreground "
-        variant="outline"
-      >
-        Fantasy
-      </Button>
-      <Button
-        className="w-[77px] h-[20px] text-text-foreground "
-        variant="outline"
-      >
-        Musical
-      </Button>
-      <Button
-        className="w-[77px] h-[20px] text-text-foreground "
-        variant="outline"
-      >
-        Romance
-      </Button>
-      <div className=" flex justify center">
-        <p>{movie.overview}</p>
-        <div className="  flex justify center  gap-5 w-[1880px] h-[41px] --spacing(1) ">
-          <p>Director</p>
-          <p>Jon M. Chu</p>
+    <div className="ml-[300px] container">
+      {/* <Title /> */}
+      <Frame movie={movie} />
+      <div>
+        <div>
+          <DetailButton />
         </div>
-        <div className="  flex justify center  gap-5 w-[1880px] h-[41px] --spacing(1) ">
-          <p>Director</p>
-          <p>Jon M. Chu</p>
-        </div>
-        <div className="  flex justify center  gap-5 w-[1880px] h-[41px] --spacing(1) ">
-          <p>Director</p>
-          <p>Jon M. Chu</p>
+        <div className=" ">
+          <p>{movie.overview}</p>
+          <DirectorName />
         </div>
       </div>
     </div>

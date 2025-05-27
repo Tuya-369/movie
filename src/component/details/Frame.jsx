@@ -1,5 +1,3 @@
-import { PlayIcon, StarIcon } from "lucide-react";
-import { Button } from "../../../movie/src/components/ui/button";
 import { MovieTrailer } from "../movieTrailer";
 
 export const Frame = ({ movie }) => {
@@ -14,7 +12,7 @@ export const Frame = ({ movie }) => {
           className=" relative w-full h-[400px] md:h-[524px] object-cover rounded-xl"
           alt={movie?.title}
         />
-        <MovieTrailer className="absolute " />
+        <MovieTrailer />
       </div>
     </div>
   );

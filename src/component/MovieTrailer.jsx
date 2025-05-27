@@ -1,15 +1,14 @@
+import { getMovieTrailerById } from "@/getMovieTrailerById";
+import { PlayIcon } from "lucide-react";
+import { useEffect, useState } from "react";
+import YouTube from "react-youtube";
+import { Button } from "../../movie/src/components/ui/button";
 import {
   Dialog,
   DialogContent,
   DialogTitle,
   DialogTrigger,
 } from "@/components/ui/dialog";
-import { getMovieTrailerById } from "@/getMovieTrailerById";
-import { PlayIcon } from "lucide-react";
-import { useEffect, useState } from "react";
-import YouTube from "react-youtube";
-import { Button } from "../../movie/src/components/ui/button";
-
 export const MovieTrailer = ({ movieId }) => {
   console.log("movieeIddd", movieId);
   const [trailer, setTrailer] = useState([]);
@@ -25,7 +24,6 @@ export const MovieTrailer = ({ movieId }) => {
     };
     getMovieTrailer();
   }, []);
-
   const MovieTrailer = trailer.find(
     (Video) => Video.name === "Official Trailer"
   );

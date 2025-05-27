@@ -1,4 +1,4 @@
-import { PlayIcon, StarIcon } from "lucide-react";
+import { StarIcon } from "lucide-react";
 import Link from "next/link";
 import { Page } from "../pages/details/[movieId]";
 import { MovieTrailer } from "./MovieTrailer";

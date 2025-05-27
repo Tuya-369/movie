@@ -1,4 +1,5 @@
 import { StarIcon } from "lucide-react";
+import Link from "next/link";
 
 export const Title = ({ movie }) => {
   return (
