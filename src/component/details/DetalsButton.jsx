@@ -1,38 +1,19 @@
 import { Button } from "@/components/ui/button";
 
+const genres = ["Fairy Tale", "Pop Musical", "Fantasy", "Musical", "Romance"];
+
 export const DetailButton = () => {
   return (
-    <div className="pb-[20px]">
-      <Button
-        className=" mr-3 w-[77px] h-[20px] text-text-foreground "
-        variant="outline"
-      >
-        Fairy Tale
-      </Button>
-      <Button
-        className="w-[77px] h-[20px] text-text-foreground mr-3 "
-        variant="outline"
-      >
-        Pop Musical
-      </Button>
-      <Button
-        className="w-[77px] h-[20px] text-text-foreground mr-3 "
-        variant="outline"
-      >
-        Fantasy
-      </Button>
-      <Button
-        className="w-[77px] h-[20px] text-text-foreground mr-3  "
-        variant="outline"
-      >
-        Musical
-      </Button>
-      <Button
-        className="w-[77px] h-[20px] text-text-foreground "
-        variant="outline"
-      >
-        Romance
-      </Button>
+    <div className="flex flex-wrap gap-2 mb-4">
+      {genres.map((genre) => (
+        <Button
+          key={genre}
+          className="h-8 px-4 text-xs text-text-foreground"
+          variant="outline"
+        >
+          {genre}
+        </Button>
+      ))}
     </div>
   );
 };

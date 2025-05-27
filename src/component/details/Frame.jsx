@@ -2,18 +2,15 @@ import { MovieTrailer } from "../movieTrailer";
 
 export const Frame = ({ movie }) => {
   return (
-    <div className="w-full max-w-[1080px] mx-auto mt-20">
-      <div className="absolute ml-10">
-        <MovieTrailer />
+    <div className="relative my-4">
+      <div className=" mt-70 absolute top-4 left-4 z-10">
+        <MovieTrailer movieId={movie?.id} />
       </div>
-      <div className="relative">
-        <img
-          src={`https://image.tmdb.org/t/p/original/${movie?.backdrop_path}`}
-          className=" relative w-full h-[400px] md:h-[524px] object-cover rounded-xl"
-          alt={movie?.title}
-        />
-        <MovieTrailer />
-      </div>
+      <img
+        src={`https://image.tmdb.org/t/p/original/${movie?.backdrop_path}`}
+        className="w-full max-h-[420px] object-cover rounded-lg shadow-md"
+        alt={movie?.title}
+      />
     </div>
   );
 };

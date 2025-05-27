@@ -21,7 +21,6 @@ export default function Page() {
   if (!movie) {
     return (
       <div>
-        {(movie === "Upcoming" && <Upcoming data={movieId} />) || mo}
         <div className=" container  mx-auto ">
           <Header />
           <div className=" mt-[20px]flex justify-between h-[36px] w-full w-[1440px] h-[1050px]">

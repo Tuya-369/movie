@@ -1,30 +1,57 @@
 import { ArrowRight } from "lucide-react";
 import { Moviecart } from "./Moviecart";
+import { useEffect, useState } from "react";
 import Link from "next/link";
-export const TopRated = ({ movie }) => {
+
+export const TopRated = () => {
+  const [topRatedMovies, setTopRatedMovies] = useState([]);
+  const [loading, setLoading] = useState(true);
+
+  const getTopRated = async () => {
+    try {
+      const response = await fetch(
+        `${process.env.NEXT_PUBLIC_TMDB_BASE_URL}movie/top_rated?language=en-US&page=1`,
+        {
+          method: "GET",
+          headers: {
+            accept: "application/json",
+            Authorization: `Bearer ${process.env.NEXT_PUBLIC_TMDB_API_TOKEN}`,
+          },
+        }
+      );
+      const data = await response.json();
+      setTopRatedMovies(data.results || []);
+    } catch (error) {
+      console.error("Failed to fetch top rated movies:", error);
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  useEffect(() => {
+    getTopRated();
+  }, []);
+
   return (
     <div className="px-5">
-      <div>
-        <img
-          src={`https://image.tmdb.org/t/p/original/${movie?.backdrop_path}`}
-          className="h-[229px] w-[390px] rounded-t-lg md:h-[340px] md:w-[230px] "
-        ></img>
-        <div className="flex justify-between  h-[36px] w-full ">
-          <h3 className="text-2xl font-semibold pl-3">Top Rated</h3>
-          <Link href={`/category/Topratting`}>
-            <button className="flex py-2 px-4 gap-1 text-sm font-medium ">
-              See More {} <ArrowRight className="h-[16px] w-[16px]  " />
-            </button>
-          </Link>
-        </div>
-        <div className="grid grid-cols-2 gap-2 sm:grid-cols-3  lg:grid-cols-4 xl:grid-cols-5">
-          {Array.from({ length: 9 }).map((_, index) => (
-            <Moviecart key={index}>
-              <div className="p-1"></div>
-            </Moviecart>
+      <div className="flex justify-between items-center h-[36px] w-full mb-4">
+        <h3 className="text-2xl font-semibold pl-3">Top Rated</h3>
+        <Link href="/category/Topratting">
+          <button className="flex items-center py-2 px-4 gap-1 text-sm font-medium">
+            See More <ArrowRight className="h-[16px] w-[16px]" />
+          </button>
+        </Link>
+      </div>
+
+      {loading ? (
+        <div className="text-center py-10 text-gray-500">Loading...</div>
+      ) : (
+        <div className="grid grid-cols-2 gap-2 sm:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5">
+          {topRatedMovies.slice(0, 9).map((movie) => (
+            <Moviecart key={movie.id} movie={movie} />
           ))}
         </div>
-      </div>
+      )}
     </div>
   );
 };

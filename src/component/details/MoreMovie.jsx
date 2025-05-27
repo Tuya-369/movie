@@ -1,42 +1,41 @@
 import { useEffect, useState } from "react";
-import { Moviecart } from "../../../movie/src/component/Moviecart";
-import Link from "next/link";
+
 import { ArrowRight } from "lucide-react";
+import { Moviecart } from "../../../movie/src/component/Moviecart";
 
 export const MoreMovie = () => {
-  const [MoreMovie, setMoreMovie] = useState([]);
-  const getMoreMovi = async () => {
+  const [movies, setMovies] = useState([]);
+
+  const getMoreMovies = async () => {
     try {
-      const response = await fetch(`${process.env.NEXT_PUBLIC_TMDB_BASE_URL}`, {
-        method: "GET",
+      const response = await fetch(`${process.env.NEXT_PUBLIC_TMDB_BASE_URL}/movie/popular?language=en-US&page=1`, {
         headers: {
-          accept: "application/json",
-          Authorization: `Bearer ${process.env.NEXT_PUBLIC_TMDB_API_TOKEN}/movie/${id}/similar?language=en-US&page=1`,
+          Authorization: `Bearer ${process.env.NEXT_PUBLIC_TMDB_API_TOKEN}`,
         },
       });
-      const movies = await response.json();
-      setMoreMovie(movies.results);
+      const data = await response.json();
+      setMovies(data.results.slice(0, 6)); // 6 кино
     } catch (error) {
-      console.log(error);
+      console.error("Error fetching movies:", error);
     }
   };
+
   useEffect(() => {
-    getMoreMovi();
+    getMoreMovies();
   }, []);
 
   return (
-    <div className="w-[280px] h-[440px] ml-[180px]">
-      <div className="flex justify center">
-        <p className=" text-2xl font-semibold pb-[20px] pt-[10px]">
-          {" "}
-          More like this{" "}
-        </p>
-        <button className=" mr-[100px] flex py-2 px-4 gap-1 text-sm font-medium ">
-          See More <ArrowRight className="h-[16px] w-[16px]  " />
+    <div className="mt-12">
+      <div className="flex justify-between items-center mb-4">
+        <h2 className="text-2xl font-semibold">More like this</h2>
+        <button className="flex items-center gap-1 text-sm text-blue-600">
+          See More <ArrowRight className="h-4 w-4" />
         </button>
       </div>
-      <div className="grid grid-cols-4 gap-4">
-        <Moviecart />
+      <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-6 gap-4">
+        {movies.map((movie) => (
+          <Moviecart key={movie.id} movie={movie} />
+        ))}
       </div>
     </div>
   );

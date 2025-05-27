@@ -4,11 +4,6 @@ import { Details } from "@/component/details/Details";
 import { getMovieById } from "@/getMovieById";
 import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
-import { Title } from "@/component/details/IdMovieTitle";
-import { MovieTrailer } from "@/component/movieTrailer";
-import { Frame } from "@/component/details/Frame";
-import { MoreMovie } from "@/component/details/MoreMovie";
-
 export default function Page() {
   const router = useRouter();
   const { movieId } = router.query;
@@ -33,9 +28,7 @@ export default function Page() {
   return (
     <div>
       <Header />
-      <Frame movie={movie} />
       <Details movie={movie} />
-      <MoreMovie />
       <div className="mt-[70px]">
         <Footer />
       </div>
