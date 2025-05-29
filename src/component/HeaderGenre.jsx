@@ -4,13 +4,13 @@ import {
   DropdownMenuItem,
   DropdownMenuSeparator,
   DropdownMenuTrigger,
-} from "@radix-ui/react-dropdown-menu";
+} from "@/components/ui/dropdown-menu";
 import { AllGenres } from "./GenreDetails/AllGenre";
 
 export const HeaderGenre = () => {
   return (
     <DropdownMenu>
-      <DropdownMenuTrigger className="flex border w-[97px] h-[36px] items-center gap-5 justify-center rounded-sm cursor-pointer bg-white">
+      <DropdownMenuTrigger className="flex border w-[97px] h-[36px] items-center gap-2 justify-center rounded-sm cursor-pointer bg-white text-sm">
         Genres
       </DropdownMenuTrigger>
       <DropdownMenuContent className="p-5 w-[577px]">

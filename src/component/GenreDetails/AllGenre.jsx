@@ -1,10 +1,12 @@
 import { Badge } from "@/components/ui/badge";
 import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
+
 export const AllGenres = () => {
   const router = useRouter();
   const [genres, setGenres] = useState([]);
   const [genreIds, setGenreIds] = useState([]);
+
   const getMovieGenres = async () => {
     try {
       const response = await fetch(
@@ -17,9 +19,8 @@ export const AllGenres = () => {
           },
         }
       );
-
       const movies = await response.json();
-      setGenres(movies);
+      setGenres(movies.genres || []);
     } catch (error) {
       console.log(error);
     }
@@ -30,16 +31,16 @@ export const AllGenres = () => {
   }, []);
 
   const handleSelectGenre = (id, name) => {
-    setGenreIds([...genreIds, id]);
-
-    router.push(`/genres?genreIds=${genreIds}&name=${name}`);
+    const updatedIds = [...new Set([...genreIds, id])];
+    setGenreIds(updatedIds);
+    router.push(`/genres?genreIds=${updatedIds.join(",")}&name=${name}`);
   };
-
   return (
-    <div className=" relative bg-gray-100 flex flex-wrap gap-4">
-      {genres?.genres?.map((genre) => (
+    <div className="flex flex-wrap gap-3">
+      {genres.map((genre) => (
         <Badge
-          className="w-fit  bg-white text-foreground hover:bg-none text-[12px]  font-bold"
+          key={genre.id}
+          className="bg-white text-foreground text-[12px] font-semibold border hover:bg-gray-100 cursor-pointer"
           onClick={() => handleSelectGenre(genre.id, genre.name)}
         >
           {genre.name}

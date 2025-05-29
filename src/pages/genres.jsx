@@ -1,10 +1,9 @@
-import { AllGenres } from "@/component/GenreDetails/AllGenre";
 import { Moviecart } from "@/component/Moviecart";
-import { Separator } from "@radix-ui/react-dropdown-menu";
 import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
 import { Footer } from "../../movie/src/component/Footer";
 import { Header } from "@/component/Header";
+
 const Page = () => {
   const [genreMovies, setGenreMovie] = useState({});
   const router = useRouter();
@@ -30,27 +29,25 @@ const Page = () => {
   };
 
   useEffect(() => {
-    getMovieGenres();
+    if (genreIds) {
+      getMovieGenres();
+    }
   }, [genreIds]);
 
   return (
     <div>
       <Header />
-      <div className="max-w-[1280px] mx-auto">
-        <div className="flex mt-8">
-          <div className="w-[387px]">
-            <AllGenres />
-          </div>
-          <Separator orientation="vertical" className="mx-" />
-          <div className="w-[804px] flex flex-wrap gap-2">
-            {genreMovies?.results?.map((movie) => (
-              <Moviecart movie={movie} />
-            ))}
-          </div>
+      <div className="max-w-[1280px] mx-auto px-4">
+        <h2 className="text-2xl font-bold mt-8 mb-4">Upcoming</h2>
+        <div className="flex flex-wrap gap-4 justify-start">
+          {genreMovies?.results?.map((movie) => (
+            <Moviecart key={movie.id} movie={movie} />
+          ))}
         </div>
-        <Footer />
       </div>
+      <Footer />
     </div>
   );
 };
+
 export default Page;
