@@ -1,4 +1,3 @@
-
 import { MovieCarousel } from "@/component/Carousel";
 import { Footer } from "@/component/Footer";
 import { Header } from "@/component/Header";
@@ -34,7 +33,7 @@ export default function Home() {
   }, []);
   return (
     <div className="container mx-auto overflow-hidden">
-      <Header/>
+      <Header />
       <MovieCarousel nowPlayingMovie={nowPlaying} />
       <Upcoming />
       <Popular />

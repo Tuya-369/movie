@@ -4,7 +4,7 @@ export const Moviecart = ({ movie }) => {
     <div className="w-fit">
       <img
         src={`https://image.tmdb.org/t/p/original/${movie?.backdrop_path}`}
-        className="h-[229px] w-[390px] rounded-t-lg md:h-[340px] md:w-[230px]"
+        className="h-[331px] w-[165px] rounded-t-lg md:h-[340px] md:w-[230px]"
       ></img>
       <div className="w-[158px] bg-gray-300 rounded-b-lg  md:w-[230px]">
         <div className="flex p-2">

@@ -4,8 +4,8 @@ import { Page } from "../pages/details/[movieId]";
 import { MovieTrailer } from "./MovieTrailer";
 export const MovieCarouselItem = ({ movie }) => {
   return (
-    <div className="w-full">
-      <div className=" md:flex md:relative ">
+    <div className="">
+      <div className=" w-full  w-[800px] md:flex md:relative ">
         <Link href={`/details/${movie.id}`}>
           <img
             src={`https://image.tmdb.org/t/p/original/${movie.backdrop_path}`}

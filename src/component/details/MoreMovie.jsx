@@ -2,17 +2,29 @@ import { useEffect, useState } from "react";
 
 import { ArrowRight } from "lucide-react";
 import { Moviecart } from "../../../movie/src/component/Moviecart";
+import {
+  Pagination,
+  PaginationContent,
+  PaginationEllipsis,
+  PaginationItem,
+  PaginationLink,
+  PaginationNext,
+  PaginationPrevious,
+} from "@/components/ui/pagination";
 
 export const MoreMovie = () => {
   const [movies, setMovies] = useState([]);
 
   const getMoreMovies = async () => {
     try {
-      const response = await fetch(`${process.env.NEXT_PUBLIC_TMDB_BASE_URL}/movie/popular?language=en-US&page=1`, {
-        headers: {
-          Authorization: `Bearer ${process.env.NEXT_PUBLIC_TMDB_API_TOKEN}`,
-        },
-      });
+      const response = await fetch(
+        `${process.env.NEXT_PUBLIC_TMDB_BASE_URL}/movie/popular?language=en-US&page=1`,
+        {
+          headers: {
+            Authorization: `Bearer ${process.env.NEXT_PUBLIC_TMDB_API_TOKEN}`,
+          },
+        }
+      );
       const data = await response.json();
       setMovies(data.results.slice(0, 6)); // 6 кино
     } catch (error) {
@@ -25,7 +37,7 @@ export const MoreMovie = () => {
   }, []);
 
   return (
-  <div className=" w-[1030px] h-[440px] mt-12">
+    <div className=" w-[1030px] h-[440px] mt-12">
       <div className="flex justify-between items-center mb-4">
         <h2 className="text-2xl font-semibold">More like this</h2>
         <button className="flex items-center gap-1 text-sm text-blue-600">
@@ -36,6 +48,22 @@ export const MoreMovie = () => {
         {movies.map((movie) => (
           <Moviecart key={movie.id} movie={movie} />
         ))}
+        <Pagination>
+          <PaginationContent>
+            <PaginationItem>
+              <PaginationPrevious href="#" />
+            </PaginationItem>
+            <PaginationItem>
+              <PaginationLink href="#">12</PaginationLink>
+            </PaginationItem>
+            <PaginationItem>
+              <PaginationEllipsis />
+            </PaginationItem>
+            <PaginationItem>
+              <PaginationNext href="" />
+            </PaginationItem>
+          </PaginationContent>
+        </Pagination>
       </div>
     </div>
   );
