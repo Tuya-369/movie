@@ -1,4 +1,16 @@
-export const DirectorName = () => {
+import { useEffect, useState } from "react";
+
+export const DirectorName = ({ name }) => {
+  const [productName, setName] = useState([]);
+  useEffect(() => {
+    const getproducNAmeID = async () => {
+      const response = await getProductID(name);
+      setMovies(response?.results);
+    };
+    console.log("name", name);
+    if (!name) return;
+    getproducNAmeID();
+  }, [name]);
   return (
     <div className="text-[16px] divide-y divide-gray-200 mt-6">
       <div className="flex gap-2 py-2">

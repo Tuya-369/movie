@@ -27,7 +27,7 @@ export default function Page() {
             <Upcoming />
           </div>
         </div>
-        <div className="mt-[700px]">
+        <div className="mt-[700px] mt-[30spx]">
           <Footer />
         </div>
       </div>

@@ -1,16 +1,25 @@
-import { Search } from "lucide-react";
+import { HomeIcon, Search } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { Input } from "@/components/ui/input";
 import { HeaderGenre } from "./HeaderGenre";
+import Link from "next/link";
 export const Header = () => {
   return (
     <div className="flex gap-3 my-3 max-w-[1280px] mx-auto">
-      <HeaderGenre />
+      <Link href={`/`}>
+        <div className="ml-2 text-blue-800 fill-blue-800 ">
+          <HomeIcon />
+        </div>
+        <h1 className="">Home</h1>
+      </Link>
+      <div className="ml-100 ">
+        <HeaderGenre />
+      </div>
       <div className="flex align-bottom ">
-        <div className={cn("relative text-muted-foreground", "w-[379px]")}>
+        <div className={cn("relative text-muted-foreground  w-[379px]")}>
           <Search
             size={16}
-            className="absolute left-3 top-1/2 -translate-y-1/2"
+            className="absolute left-3 top-1/2 -translate-y-1/2blue"
           />
           <Input
             type="text"

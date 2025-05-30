@@ -10,7 +10,8 @@ export const Moviecart = ({ movie }) => {
         <div className="flex p-2">
           <Star className="text-yellow-300 fill-yellow-300 " />
           <p className="w-[36] h-[16] pl-6px">7</p>
-          <p className="text-gray-500">{movie?.vote_average}</p>
+          <p className="text-gray-500">{movie.vote_average}</p>
+          <p>/10</p>
         </div>
         <div>
           <p className=" h-[40px] text-[14px] font-normal pl-2">

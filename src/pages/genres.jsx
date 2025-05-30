@@ -3,6 +3,15 @@ import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
 import { Footer } from "../../movie/src/component/Footer";
 import { Header } from "@/component/Header";
+import {
+  Pagination,
+  PaginationContent,
+  PaginationEllipsis,
+  PaginationItem,
+  PaginationLink,
+  PaginationNext,
+  PaginationPrevious,
+} from "@/components/ui/pagination";
 
 const Page = () => {
   const [genreMovies, setGenreMovie] = useState({});
@@ -44,6 +53,22 @@ const Page = () => {
             <Moviecart key={movie.id} movie={movie} />
           ))}
         </div>
+        <Pagination>
+          <PaginationContent>
+            <PaginationItem>
+              <PaginationPrevious href="#" />
+            </PaginationItem>
+            <PaginationItem>
+              <PaginationLink href="#">1</PaginationLink>
+            </PaginationItem>
+            <PaginationItem>
+              <PaginationEllipsis />
+            </PaginationItem>
+            <PaginationItem>
+              <PaginationNext href="#" />
+            </PaginationItem>
+          </PaginationContent>
+        </Pagination>
       </div>
       <Footer />
     </div>

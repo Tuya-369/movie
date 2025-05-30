@@ -20,7 +20,9 @@ export const MovieCarouselItem = ({ movie }) => {
             </div>
             <div className="flex">
               <StarIcon className="text-yellow-300 fill-yellow-300" />
-              <p className="pl-2 text-lg md:text-white">{movie?.vote_average}</p>
+              <p className="pl-2 text-lg md:text-white">
+                {movie?.vote_average}
+              </p>
             </div>
           </div>
           <div className="md:text-white md:w-[302px] pt-4">
