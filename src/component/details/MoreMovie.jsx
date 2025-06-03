@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { ArrowRight } from "lucide-react";
-import { Moviecart } from "../../../movie/src/component/Moviecart";
 import { getMoreMovieID } from "@/getMoreMovieID";
+import { Moviecart } from "../Moviecart";
 
 export const MoreMovie = ({ movie }) => {
   const [movies, setMovies] = useState([]);

@@ -1,16 +1,17 @@
+import { getproducNAmeID } from "@/getproducNAmeID";
 import { useEffect, useState } from "react";
 
-export const DirectorName = ({ name }) => {
+export const DirectorName = ({ movie }) => {
   const [productName, setName] = useState([]);
+  console.log("name", movie);
   useEffect(() => {
-    const getproducNAmeID = async () => {
-      const response = await getProductID(name);
-      setMovies(response?.results);
+    const getproducNameId = async () => {
+      const response = await getproducNAmeID(movie);
     };
-    console.log("name", name);
-    if (!name) return;
-    getproducNAmeID();
-  }, [name]);
+
+    if (!movie) return;
+    getproducNameId();
+  }, [movie]);
   return (
     <div className="text-[16px] divide-y divide-gray-200 mt-6">
       <div className="flex gap-2 py-2">

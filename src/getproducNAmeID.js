@@ -1,10 +1,12 @@
-export const getproducNAmeID = async (name) => {
+export const getproducNAmeID = async (movies) => {
   try {
     const response = await fetch(
-      `${process.env.NEXT_PUBLIC_TMDB_BASE_URL}	GET: /movie/${name.id}/credits?language=en-US`,
+      `${process.env.NEXT_PUBLIC_TMDB_BASE_URL}	/movie/${movies.id}/credits?language=en-US`,
       {
+        method: "GET",
         headers: {
-          Authorization: `Bearer ${process.env.NEXT_PUBLIC_TMDB_API_TOKEN}`,
+          accept: "application/json",
+          Authorization: ` Bearer ${process.env.NEXT_PUBLIC_TMDB_API_TOKEN}`,
         },
       }
     );

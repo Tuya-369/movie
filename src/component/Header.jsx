@@ -1,4 +1,4 @@
-import { HomeIcon, Search } from "lucide-react";
+import { Film, HomeIcon, Search } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { Input } from "@/components/ui/input";
 import { HeaderGenre } from "./HeaderGenre";
@@ -6,6 +6,9 @@ import Link from "next/link";
 export const Header = () => {
   return (
     <div className="flex gap-3 my-3 max-w-[1280px] mx-auto">
+      <h1 className="mr-[100px] mt-[10px]  flex justify center ml-2 text-blue-800 fill-blue-800">
+        MovieZ
+      </h1>
       <Link href={`/`}>
         <div className="ml-2 text-blue-800 fill-blue-800 ">
           <HomeIcon />
@@ -17,10 +20,6 @@ export const Header = () => {
       </div>
       <div className="flex align-bottom ">
         <div className={cn("relative text-muted-foreground  w-[379px]")}>
-          <Search
-            size={16}
-            className="absolute left-3 top-1/2 -translate-y-1/2blue"
-          />
           <Input
             type="text"
             placeholder="Search..."

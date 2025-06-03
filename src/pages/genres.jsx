@@ -1,23 +1,14 @@
 import { Moviecart } from "@/component/Moviecart";
 import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
-import { Footer } from "../../movie/src/component/Footer";
 import { Header } from "@/component/Header";
-import {
-  Pagination,
-  PaginationContent,
-  PaginationEllipsis,
-  PaginationItem,
-  PaginationLink,
-  PaginationNext,
-  PaginationPrevious,
-} from "@/components/ui/pagination";
+import { Pegnation } from "@/component/Pegnation";
+import { Footer } from "@/component/Footer";
 
 const Page = () => {
   const [genreMovies, setGenreMovie] = useState({});
   const router = useRouter();
   const genreIds = router.query.genreIds;
-
   const getMovieGenres = async () => {
     try {
       const response = await fetch(
@@ -53,22 +44,7 @@ const Page = () => {
             <Moviecart key={movie.id} movie={movie} />
           ))}
         </div>
-        <Pagination>
-          <PaginationContent>
-            <PaginationItem>
-              <PaginationPrevious href="#" />
-            </PaginationItem>
-            <PaginationItem>
-              <PaginationLink href="#">1</PaginationLink>
-            </PaginationItem>
-            <PaginationItem>
-              <PaginationEllipsis />
-            </PaginationItem>
-            <PaginationItem>
-              <PaginationNext href="#" />
-            </PaginationItem>
-          </PaginationContent>
-        </Pagination>
+        <Pegnation />
       </div>
       <Footer />
     </div>

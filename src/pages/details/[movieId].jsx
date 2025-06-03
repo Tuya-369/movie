@@ -14,7 +14,6 @@ export default function Page() {
 
     const getMovie = async () => {
       const data = await getMovieById(movieId);
-      console.log("dataaa:", data);
       setMovie(data);
     };
 

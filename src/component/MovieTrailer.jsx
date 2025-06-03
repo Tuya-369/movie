@@ -1,6 +1,5 @@
 import { getMovieTrailerById } from "@/getMovieTrailerById";
 import { PlayIcon } from "lucide-react";
-import { Button } from "../../movie/src/components/ui/button";
 import {
   Dialog,
   DialogContent,
@@ -9,6 +8,8 @@ import {
 } from "@/components/ui/dialog";
 import YouTube from "react-youtube";
 import { useEffect, useState } from "react";
+import { Button } from "@/components/ui/button";
+
 export const MovieTrailer = ({ movieId }) => {
   const [trailer, setTrailer] = useState([]);
   useEffect(() => {
@@ -40,7 +41,7 @@ export const MovieTrailer = ({ movieId }) => {
             videoId={officialTrailer.key}
             opts={{
               height: "561",
-              width: "997", 
+              width: "997",
               playerVars: {
                 autoplay: 1,
               },
