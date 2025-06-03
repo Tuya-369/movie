@@ -1,7 +1,6 @@
 import { StarIcon } from "lucide-react";
 
 export const Title = ({ movie }) => {
-  console.log("movieTitle", movie);
 
   return (
     <div className="mb-6">

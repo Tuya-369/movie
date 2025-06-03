@@ -1,18 +1,19 @@
-export const getproducNAmeID = async (movies) => {
+export const getproducNAmeID = async (movie) => {
   try {
-    const response = await fetch(
-      `${process.env.NEXT_PUBLIC_TMDB_BASE_URL}	/movie/${movies.id}/credits?language=en-US`,
-      {
-        method: "GET",
-        headers: {
-          accept: "application/json",
-          Authorization: ` Bearer ${process.env.NEXT_PUBLIC_TMDB_API_TOKEN}`,
-        },
-      }
-    );
+    const url = `${process.env.NEXT_PUBLIC_TMDB_BASE_URL}movie/${movie.id}/credits?language=en-US`;
+
+    const response = await fetch(url, {
+      method: "GET",
+      headers: {
+        accept: "application/json",
+        Authorization: `Bearer ${process.env.NEXT_PUBLIC_TMDB_API_TOKEN}`,
+      },
+    });
+
     const data = await response.json();
+    console.log("Creditttt:", data);
+
     return data;
   } catch (error) {
-    console.error("Error fetching movies:", error);
   }
 };

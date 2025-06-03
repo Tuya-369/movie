@@ -6,9 +6,6 @@ import Link from "next/link";
 export const Header = () => {
   return (
     <div className="flex gap-3 my-3 max-w-[1280px] mx-auto">
-      <h1 className="mr-[100px] mt-[10px]  flex justify center ml-2 text-blue-800 fill-blue-800">
-        MovieZ
-      </h1>
       <Link href={`/`}>
         <div className="ml-2 text-blue-800 fill-blue-800 ">
           <HomeIcon />
