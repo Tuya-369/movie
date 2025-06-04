@@ -1,7 +1,6 @@
 import { StarIcon } from "lucide-react";
 import Link from "next/link";
 import { MovieTrailer } from "./MovieTrailer";
-
 export const MovieCarouselItem = ({ movie }) => {
   return (
     <div className="w-full">

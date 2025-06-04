@@ -3,11 +3,12 @@ import { Footer } from "@/component/Footer";
 import { Header } from "@/component/Header";
 import { MovieCarouselItem } from "@/component/MovieCarouselItem";
 import { Popular } from "@/component/Popular";
+import { SkeletonCard } from "@/component/SkeletonCard";
 import { TopRated } from "@/component/TopRated";
 import { Upcoming } from "@/component/Upcoming";
 import { useEffect, useState } from "react";
-
 export default function Home() {
+  const [loading, setloading] = useState([true]);
   const [nowPlaying, setNowPlayingMovie] = useState([]);
   const getNowPlayingMovies = async () => {
     try {
@@ -27,6 +28,7 @@ export default function Home() {
     } catch (error) {
       console.log(error);
     }
+    setloading(false);
   };
   useEffect(() => {
     getNowPlayingMovies();
@@ -34,7 +36,11 @@ export default function Home() {
   return (
     <div className="container mx-auto overflow-hidden">
       <Header />
-      <MovieCarousel nowPlayingMovie={nowPlaying} />
+      {loading ? (
+        <SkeletonCard />
+      ) : (
+        <MovieCarousel nowPlayingMovie={nowPlaying} />
+      )}
       <Upcoming />
       <Popular />
       <TopRated />
