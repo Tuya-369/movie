@@ -2,7 +2,7 @@ import { ArrowRight } from "lucide-react";
 import { Moviecart } from "./Moviecart";
 import { useEffect, useState } from "react";
 import Link from "next/link";
-import { SkeletonCard } from "./SkeletonCard";
+import { LouderCard } from "./LouderCard";
 
 export const Upcoming = () => {
   const [upComingMovie, setUpcomingMovie] = useState([]);
@@ -46,7 +46,7 @@ export const Upcoming = () => {
       <div className="text-center py-10 text-gray-500"></div>
       <div className="grid grid-cols-2 gap-2 sm:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5">
         {loading ? (
-          <SkeletonCard />
+          <LouderCard />
         ) : (
           upComingMovie.map((movie) => (
             <Moviecart key={movie.id} movie={movie} />

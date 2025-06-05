@@ -14,6 +14,5 @@ export const getproducNAmeID = async (movie) => {
     console.log("Creditttt:", data);
 
     return data;
-  } catch (error) {
-  }
+  } catch (error) {}
 };

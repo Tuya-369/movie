@@ -24,7 +24,7 @@ export const TopRated = () => {
     } catch (error) {
       console.error("Failed to fetch top rated movies:", error);
     } finally {
-      setLoading(false);
+      setLoading(true);
     }
   };
 
@@ -42,16 +42,11 @@ export const TopRated = () => {
           </button>
         </Link>
       </div>
-
-      {loading ? (
-        <div className="text-center py-10 text-gray-500">Loading...</div>
-      ) : (
-        <div className="grid grid-cols-2 gap-2 sm:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5">
-          {topRatedMovies.slice(0, 9).map((movie) => (
-            <Moviecart key={movie.id} movie={movie} />
-          ))}
-        </div>
-      )}
+      <div className="grid grid-cols-2 gap-2 sm:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5">
+        {topRatedMovies.slice(0, 9).map((movie) => (
+          <Moviecart key={movie.id} movie={movie} />
+        ))}
+      </div>
     </div>
   );
 };

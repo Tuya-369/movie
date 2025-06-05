@@ -38,7 +38,6 @@ const Page = () => {
       getMovieGenres();
     }
   }, [genreIds]);
-
   return (
     <div>
       <Header />
